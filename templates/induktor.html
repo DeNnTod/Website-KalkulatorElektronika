@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card card-pro p-4 shadow">
+
+<h3 class="text-center mb-3">🌀 Induktor</h3>
+
+<form method="POST">
+
+{% for i in range(1,4) %}
+<select name="band{{i}}" class="form-select mb-2 color-select">
+<option disabled selected>-- warna --</option>
+{% for w in warna_digit %}
+<option value="{{w}}">{{w}}</option>
+{% endfor %}
+</select>
+{% endfor %}
+
+<button class="btn btn-warning w-100">Hitung</button>
+
+</form>
+
+{% if hasil %}
+<div class="alert alert-warning mt-3 text-center">{{hasil}}</div>
+{% endif %}
+
+</div>
+
+<script>
+const map={
+"hitam":"black","coklat":"brown","merah":"red","oranye":"orange",
+"kuning":"yellow","hijau":"green","biru":"blue","ungu":"purple",
+"abu-abu":"gray","putih":"white","emas":"gold","perak":"silver"
+};
+
+document.querySelectorAll(".color-select").forEach(s=>{
+s.addEventListener("change",function(){
+this.style.background=map[this.value];
+this.style.color="white";
+});
+});
+</script>
+
+{% endblock %}

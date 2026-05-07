@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card card-pro p-4 shadow">
+
+<h3 class="text-center mb-3">⚡ Kapasitor</h3>
+
+<form method="POST">
+
+<input name="kode" class="form-control mb-3" placeholder="Contoh: 104">
+
+<select name="tol" class="form-select mb-3">
+<option disabled selected>Toleransi</option>
+{% for t in tol_list %}
+<option value="{{t}}">{{t}}</option>
+{% endfor %}
+</select>
+
+<button class="btn btn-success w-100">Hitung</button>
+
+</form>
+
+{% if hasil %}
+<div class="alert alert-info mt-3 text-center">{{hasil}}</div>
+{% endif %}
+
+</div>
+
+{% endblock %}
